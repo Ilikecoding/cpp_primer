@@ -1,0 +1,2 @@
+    When meetint the eof, system problems or bad input, 
+the following while terminate. 
