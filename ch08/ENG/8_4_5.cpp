@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 
 
     vector<string> w;
-    ex85("test.txt", w);   // Why  w = ex85("test.txt", w)  is wrong?
+    ex85("test.txt", w);   
 
     for(vector<string>::iterator it = w.begin(); it != w.end(); ++it)
     {
@@ -36,7 +36,7 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
- // We can also return void? And v shouldn't be local variable?
+ // We can also return void? And v shouldn't be local variable.
 vector<string> &ex84(const string &file_name, vector<string> &v) 
 {
 	string line;
