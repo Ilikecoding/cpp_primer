@@ -13,49 +13,11 @@ that a parenthesized expression was replaced.
 #include <string>
 using namespace std;
 
-class Solution
-{
-public:
-	string conversion(string s, int nRows)
-	{
-		if(s.size() <= nRows || nRows == 1 || s.size() == 0)
-		{
-			return s;
-		}
-
-		string new_s;
-
-		for(int i = 0; i < s.size(); i += 2 * (nRows - 1))
-		{
-			new_s.append(s[i]);
-		}
-		for(int i = 1; i < nRows - 1; i++)
-		{
-			for(int j = i; j < s.size(); j += 2 * (nRows - 1))
-			{
-				new_s += s[j];
-				if(j + 2 * (nRows - 1 - i) < s.size())
-				{
-					new_s += s[j + 2 * (nRows - 1 - i)];
-				}
-			}
-		}
-		for(int i = nRows - 1; i < s.size(); i += 2 * (nRows - 1))
-		{
-			new_s += s[i];
-		}
-
-		return new_s;
-	}
-};
-
-
 int main(int argc, char const *argv[])
 {
 	string expression("This is (pezy).");
 	bool flag = false;
 	stack<char> stk;
-
 	for(const auto &s : expression)
 	{
 		if(s == '(')         
@@ -64,7 +26,6 @@ int main(int argc, char const *argv[])
 			continue; 
 		}
 		else if(s == ')')    flag = false;
-
 		if(flag)             stk.push(s);
 	}
 
@@ -77,9 +38,5 @@ int main(int argc, char const *argv[])
 
 	expression.replace(expression.find("(") + 1, str.size(), str);
 	cout << expression << endl;
-
-	Solution solution;
-	string s("abcdefg");
-	cout << solution.conversion(s, 3) << endl;
 	return 0;
 }
